@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace _01_DeclaracaoClasse
-{
+{   
     internal class Program
     {
         static void Main(string[] args)
@@ -62,6 +62,18 @@ namespace _01_DeclaracaoClasse
             contaCaua.Sacar(200.00);
             Console.WriteLine($"Saldo Atual: {contaCaua.ConsultarSaldo()}");
 
+
+            Aluno alunoCaua = new Aluno();
+            alunoCaua.Codigo = 1;
+            alunoCaua.Nome = "Cauã";
+            alunoCaua.LancarNota(1, 8.6);
+            alunoCaua.LancarNota(2, 9.0);
+            alunoCaua.LancarNota(3, 9.5);
+            alunoCaua.LancarNota(4, 10.0);
+
+            Console.WriteLine($"Aluno {alunoCaua.Nome} {alunoCaua.Mencao()} com média de {alunoCaua.CalcularMedia():N2}");
+
+
         }
     }
 
@@ -69,13 +81,11 @@ namespace _01_DeclaracaoClasse
     public class Quadrado // Declaração da classe Quadrado
     {
         public int Lado; // Declaração da Propriedade (atributo) que representa o lado do quadrado
-        
         public int CalculaArea() // Método (função) que calcula a área do quadrado
         {
             int area = Lado * Lado;// Declarou uma variavel area com o calculo da área do Quadrado
             return area; // Retorna o Resultado do Calculo
         }
-
         public void ImprimeArea() // Método que imprime a área do quadrado no console
 
         {
@@ -138,71 +148,72 @@ namespace _01_DeclaracaoClasse
             Console.WriteLine($"Triângulo com Base de {BaseTri}, e altura de {AlturaTri} possui uma área de {CalculaArea():F2}");
         }
     }
-}
+
 
     //DECLARAÇÃO DA CLASSE CONTA
     public class Conta
     {
-    //DECLARAÇÃO DOS ATRIBUTOS DA CLASSE (características da conta)
+        //DECLARAÇÃO DOS ATRIBUTOS DA CLASSE (características da conta)
 
-    public int Banco;
-    public string Agencia;
-    public string Numero;
-    public double Saldo;
-    public double Limite;
+        public int Banco;
+        public string Agencia;
+        public string Numero;
+        public double Saldo;
+        public double Limite;
 
 
-    //DECLARAÇÃO DOS MÉTODOS (ações que a conta pode realizar)
-    public void Depositar(double valor)
-    {
-        Saldo += valor;
+        //DECLARAÇÃO DOS MÉTODOS (ações que a conta pode realizar)
+        public void Depositar(double valor)
+        {
+            Saldo += valor;
+        }
+
+        public void Sacar(double valor)
+        {
+            Saldo -= valor;
+        }
+
+        // Método para consultar o saldo disponível
+        // Retorna o valor atual do saldo da conta
+        public double ConsultarSaldo()
+        {
+            return Saldo;
+        }
     }
 
-    public void Sacar(double valor)
-    {
-        Saldo -= valor;
-    }
-
-    // Método para consultar o saldo disponível
-    // Retorna o valor atual do saldo da conta
-    public double ConsultarSaldo()
-    {
-        return Saldo;
-    }
-}
 
     // DECLARAÇÃO DA CLASSE ALUNO
     public class Aluno
     {
-    //DECLARAÇÃO DOS ATRIBUTOS SA CLASSE
-    public int Codigo;
-    public string Nome;
-    public double[] Notas = new double[4]; // Array com 4 notas do aluno (tipo double e uma para cada trimestre)
+        //DECLARAÇÃO DOS ATRIBUTOS SA CLASSE
+        public int Codigo;
+        public string Nome;
+        public double[] Notas = new double[4]; // Array com 4 notas do aluno (tipo double e uma para cada trimestre)
 
-    public void LancarNota(int trimestre, double nota) // Método para lançar uma nota em determinado trimestre
-    {
-        Notas[trimestre - 1] = nota; // Armazena a nota na posição correta do array (ajuste porque array começa em 0)
-    }
-
-    public double CalcularMedia() // Método que calcula a média das 4 notas
-    {
-        double media = 0;  // Variável para somar as notas
-        foreach (double nota in Notas) // Loop para percorrer todas as notas
+        //DECLARAÇÃO DOS MÉTODOS DA CLASSE ALUNO
+        public void LancarNota(int trimestre, double nota) // Método para lançar uma nota em determinado trimestre
         {
-            media += nota;
+            Notas[trimestre - 1] = nota; // Armazena a nota na posição correta do array (ajuste porque array começa em 0)
         }
 
-        return media / 4.0; // Retorna a média dividindo pelo total de notas (4)
-    }
+        public double CalcularMedia() // Método que calcula a média das 4 notas
+        {
+            double media = 0;  // Variável para somar as notas
+            foreach (double nota in Notas) // Loop para percorrer todas as notas
+            {
+                media += nota;
+            }
 
-    public string Mencao() // Método que retorna se o aluno foi aprovado ou reprovado
-    {
-        if (CalcularMedia() >= 5.0)  // Se a média for maior ou igual a 5
-            return "Aprovado"; // Retorna Aprovado
-        else
-            return "Reprovado"; // Caso contrário,retorna reprovado
+            return media / 4.0; // Retorna a média dividindo pelo total de notas (4)
+        }
+
+        public string Mencao() // Método que retorna se o aluno foi aprovado ou reprovado
+        {
+            //if (CalcularMedia() >= 5.0)  // Se a média for maior ou igual a 5
+            //    return "Aprovado"; // Retorna Aprovado
+            //else
+            //    return "Reprovado"; // Caso contrário,retorna reprovado
+            return (CalcularMedia() >= 5.0) ? "Aprovado" : "Reprovado";
+        }
     }
 }
-
-
-
