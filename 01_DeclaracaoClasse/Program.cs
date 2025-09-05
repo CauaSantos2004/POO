@@ -145,7 +145,7 @@ namespace _01_DeclaracaoClasse
     //DECLARAÇÃO DA CLASSE CONTA
     public class Conta
     {
-        //DECLARAÇÃO DOS ATRIBUTOS (características da conta)
+    //DECLARAÇÃO DOS ATRIBUTOS DA CLASSE (características da conta)
 
         public int Banco;
         public string Agencia;
@@ -174,34 +174,36 @@ namespace _01_DeclaracaoClasse
 
     }
 
+    // DECLARAÇÃO DA CLASSE ALUNO
     public class Aluno
-    {
+{
+        //DECLARAÇÃO DOS ATRIBUTOS SA CLASSE
         public int Codigo;
         public string Nome;
-        public double[] Notas = new double[4]; // Array de notas do aluno (tipo double)
+        public double[] Notas = new double[4]; // Array com 4 notas do aluno (tipo double e uma para cada trimestre)
 
-        public void LancarNota(int trimestre, double nota)
-        {
-            Notas[trimestre - 1] = nota;
-        }
+        public void LancarNota(int trimestre, double nota) // Método para lançar uma nota em determinado trimestre
+    {
+            Notas[trimestre - 1] = nota; // Armazena a nota na posição correta do array (ajuste porque array começa em 0)
+    }
 
-        public double CalcularMedia()
+        public double CalcularMedia() // Método que calcula a média das 4 notas
+    {
+            double media = 0;  // Variável para somar as notas
+            foreach (double nota in Notas) // Loop para percorrer todas as notas
         {
-            double media = 0;
-            foreach (double nota in Notas)
-            {
                 media += nota;
             }
 
-            return media / 4.0;
-        }
+            return media / 4.0; // Retorna a média dividindo pelo total de notas (4)
+    }
 
-        public string Mencao()
-        {
-            if (CalcularMedia() >= 5.0)
-                return "Aprovado";
+        public string Mencao() // Método que retorna se o aluno foi aprovado ou reprovado
+    {
+            if (CalcularMedia() >= 5.0)  // Se a média for maior ou igual a 5
+                return "Aprovado"; // Retorna Aprovado
             else
-                return "Reprovado";
+                return "Reprovado"; // Caso contrário,retorna reprovado
          }
     }
 
