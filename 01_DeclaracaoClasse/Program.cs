@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -47,6 +48,20 @@ namespace _01_DeclaracaoClasse
             objTri.BaseTri = 10;
             objTri.AlturaTri = 5;
             objTri.ImprimeArea();
+        
+            Conta contaCaua = new Conta();
+            contaCaua.Banco = 237;
+            contaCaua.Agencia = "002-8";
+            contaCaua.Numero = "99248-8";
+            contaCaua.Saldo = 0.00;
+            contaCaua.Limite = 500.00;
+
+            contaCaua.Depositar(1052.55);
+            Console.WriteLine($"Saldo Atual: {contaCaua.ConsultarSaldo()}");
+
+            contaCaua.Sacar(200.00);
+            Console.WriteLine($"Saldo Atual: {contaCaua.ConsultarSaldo()}");
+
         }
     }
 
@@ -126,4 +141,69 @@ namespace _01_DeclaracaoClasse
         }
     }
 }
+
+    //DECLARAÇÃO DA CLASSE CONTA
+    public class Conta
+    {
+        //DECLARAÇÃO DOS ATRIBUTOS (características da conta)
+
+        public int Banco;
+        public string Agencia;
+        public string Numero;
+        public double Saldo;
+        public double Limite;
+
+
+        //DECLARAÇÃO DOS MÉTODOS (ações que a conta pode realizar)
+        public void Depositar(double valor)
+        {
+            Saldo += valor;
+        }
+
+        public void Sacar(double valor)
+        {
+            Saldo -= valor;
+        }
+
+        // Método para consultar o saldo disponível
+        // Retorna o valor atual do saldo da conta
+        public double ConsultarSaldo()
+        {
+            return Saldo;
+        }
+
+    }
+
+    public class Aluno
+    {
+        public int Codigo;
+        public string Nome;
+        public double[] Notas = new double[4]; // Array de notas do aluno (tipo double)
+
+        public void LancarNota(int trimestre, double nota)
+        {
+            Notas[trimestre - 1] = nota;
+        }
+
+        public double CalcularMedia()
+        {
+            double media = 0;
+            foreach (double nota in Notas)
+            {
+                media += nota;
+            }
+
+            return media / 4.0;
+        }
+
+        public string Mencao()
+        {
+            if (CalcularMedia() >= 5.0)
+                return "Aprovado";
+            else
+                return "Reprovado";
+         }
+    }
+
+
 
