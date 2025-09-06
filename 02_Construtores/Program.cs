@@ -55,7 +55,7 @@ namespace _02_Construtores
 
         public void ImprimirArea()
         {
-            Console.WriteLine($"Quadrado com lado de {Lado} possui uma área de {CalculaArea()}");
+            Console.WriteLine($"Quadrado com lado de {Lado} possui uma área de {CalculaArea()}.");
         }
     }
     
