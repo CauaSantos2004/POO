@@ -122,7 +122,7 @@ namespace _02_Construtores
         //declaração dos atributos da classe
         private double Base, Altura;
 
-        //declaração do construtor
+        //declaração do construto
         public Triangulo(double Base, double Altura)
         {
             this.Base = Base;
