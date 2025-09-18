@@ -1,43 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace _08_Aluno
 {
-    class Program
+    internal class Program
     {
-        // Ponto de entrada do programa
         static void Main(string[] args)
         {
-            Console.WriteLine("=== Cadastro de Aluno ===");
-
-            // Solicita o nome do aluno
             Console.Write("Digite o nome do aluno: ");
             string nome = Console.ReadLine();
+            Aluno aluno = new Aluno(nome);
 
-            // Solicita a idade do aluno
-            Console.Write("Digite a idade do aluno: ");
-            int idade = int.Parse(Console.ReadLine());
+            Console.Write("Informe a Idade: ");
+            aluno.Idade = int.Parse(Console.ReadLine());
 
-            // Solicita a primeira nota
-            Console.Write("Digite a primeira nota: ");
-            double nota1 = double.Parse(Console.ReadLine());
+            Console.Write("Informe a 1ª Nota: ");
+            aluno.Nota1 = double.Parse(Console.ReadLine());
 
-            // Solicita a segunda nota
-            Console.Write("Digite a segunda nota: ");
-            double nota2 = double.Parse(Console.ReadLine());
+            Console.Write("Informe a 2ª Nota: ");
+            aluno.Nota2 = double.Parse(Console.ReadLine());
 
-            // Cria o objeto aluno
-            Aluno aluno = new Aluno(nome, idade, nota1, nota2);
-
-            // Mostra os dados do aluno
-            Console.WriteLine("\n--- Dados do Aluno ---");
-            Console.WriteLine("Nome: " + aluno.Nome);
-            Console.WriteLine("Idade: " + aluno.Idade);
-            Console.WriteLine("Nota 1: " + aluno.Nota1);
-            Console.WriteLine("Nota 2: " + aluno.Nota2);
-            Console.WriteLine("Média: " + aluno.Media);
-            Console.WriteLine("Situação: " + aluno.Situacao);
-
-            Console.ReadLine(); // pausa antes de fechar
+            Console.WriteLine($"Nome: {aluno.Nome} Idade {aluno.Idade} 1º Nota: {aluno.Nota1} 2ª Nota: {aluno.Nota2} Média: {aluno.Media} Situação: {aluno.Situacao}");
         }
     }
 }
