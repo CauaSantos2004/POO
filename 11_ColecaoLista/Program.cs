@@ -13,7 +13,7 @@ namespace _11_ColecaoLista
             List<string> nomes = new List<string>();
             int contador = 0;
 
-            Console.WriteLine("Digite 5 nomes: ");//Pede para digitar 5 nomes
+            Console.WriteLine("Digite 5 nomes com pelo menos 3 caractéres: ");//Pede para digitar 5 nomes
 
             while (contador < 5) // Este é o Loop - enquanto o contador (nõ tiver digitado 5 nomes) for menor que 5, ele vai solicitar que seja digitado o nome
             {
