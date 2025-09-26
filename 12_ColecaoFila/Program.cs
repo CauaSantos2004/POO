@@ -10,6 +10,8 @@ namespace _12_ColecaoFila
     {
         static void Main(string[] args)
         {
+            
         }
-    }
+
+    }   
 }
