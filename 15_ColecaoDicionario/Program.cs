@@ -10,7 +10,7 @@ namespace _15_ColecaoDicionario
     {
         static void Main(string[] args)
         {
-            // Cria um Dictionary para armazenar um RA (int) e um Nome (string).
+            // Cria um Dictionary para armazenar um RA (int) e um Nome (string)
             // A chave (RA) deve ser única.
             Dictionary<int, string> alunos = new Dictionary<int, string>();
 
