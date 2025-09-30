@@ -12,7 +12,7 @@ namespace _17_Calendario
             Calendario calendario;
             for (int mes = 1; mes <= 12; mes++)
             {
-                calendario = new Calendario(ano, mes);
+                calendario = new Calendario(ano, (Mes)mes);
                 calendario.ImprimirCalendario();
 
                 Console.WriteLine("\n\n");

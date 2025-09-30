@@ -9,22 +9,22 @@ namespace _17_Calendario
     internal class Calendario
     {
         private int ano;
-        private int mes;
+        private Mes mes;
         private DateTime primeiroDiaMes;
         private int[,] calendario;
 
-        public Calendario(int ano, int mes)
+        public Calendario(int ano, Mes mes)
         {
             this.ano = ano;
             this.mes = mes;
-            primeiroDiaMes = new DateTime(ano, mes,1);
+            primeiroDiaMes = new DateTime(ano, (int)mes,1);
             calendario = new int[6, 7];
             gerarCalendario();
         }
 
         private void gerarCalendario()
         {
-            int diasDoMes = DateTime.DaysInMonth(ano, mes);
+            int diasDoMes = DateTime.DaysInMonth(ano, (int)mes);
 
             //primeiroDiaMes = new DateTime(ano, mes, 1);
             int diaSemanaInicio = (int)primeiroDiaMes.DayOfWeek;
@@ -99,23 +99,23 @@ namespace _17_Calendario
 
             //int indice = 0;
                        
-            if (mes == 1) feriados.Add( new Feriado(1,"Confraternização Universal") );
-            else if (mes == 4)
+            if (mes == Mes.Janeiro) feriados.Add( new Feriado(1,"Confraternização Universal") );
+            else if (mes == Mes.Abril)
             {
                 feriados.Add( new Feriado(4,"Aniversário da Cidade") );
                 feriados.Add( new Feriado(21,"Tiradentes") );
             }
-            else if (mes == 5) feriados.Add( new Feriado(1,"Dia do Trabalho") );
-            else if (mes == 7) feriados.Add( new Feriado(9, "Revolução Constitucionalista de SP") );
-            else if (mes == 9) feriados.Add( new Feriado(7,"Independência do Brasil") );
-            else if (mes == 10) feriados.Add( new Feriado(12,"Nossa Senhora Aparecida") );
-            else if (mes == 11)
+            else if (mes == Mes.Maio) feriados.Add( new Feriado(1,"Dia do Trabalho") );
+            else if (mes == Mes.Julho) feriados.Add( new Feriado(9, "Revolução Constitucionalista de SP") );
+            else if (mes == Mes.Setembro) feriados.Add( new Feriado(7,"Independência do Brasil") );
+            else if (mes == Mes.Outubro) feriados.Add( new Feriado(12,"Nossa Senhora Aparecida") );
+            else if (mes == Mes.Novembro)
             {
                 feriados.Add( new Feriado(2,"Finados") );
                 feriados.Add( new Feriado(15,"Proclamação da Republica") );
                 feriados.Add( new Feriado( 20, "Conciência Negra") );
             }
-            else if (mes == 12)
+            else if (mes == Mes.Dezembro)
             {
                 feriados.Add( new Feriado(8,"Padroeira da Cidade") );
                 feriados.Add( new Feriado(25,"Natal") );
@@ -126,16 +126,16 @@ namespace _17_Calendario
             DateTime sextaFeiraSanta = domingoDePascoa.AddDays(-2);
             DateTime CorpuChrist = domingoDePascoa.AddDays(60);
 
-            if (domingoDePascoa.Month == mes)
+            if ((Mes)domingoDePascoa.Month == mes)
                 feriados.Add( new Feriado( domingoDePascoa.Day,"Páscoa") );
 
-            if (carnaval.Month == mes)
+            if ((Mes)carnaval.Month == mes)
                 feriados.Add( new Feriado( carnaval.Day,"Carnaval") );
 
-            if (sextaFeiraSanta.Month == mes)
+            if ((Mes)sextaFeiraSanta.Month == mes)
                 feriados.Add( new Feriado(sextaFeiraSanta.Day,"Sexta Feira Santa") );
 
-            if (CorpuChrist.Month == mes)
+            if ((Mes)CorpuChrist.Month == mes)
                 feriados.Add( new Feriado( CorpuChrist.Day, "Corpus Christi") );
 
             //Array.Sort(feriados);
