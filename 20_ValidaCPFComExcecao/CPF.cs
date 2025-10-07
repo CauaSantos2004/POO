@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using _20_ValidaCPFComExcecao;
 
 namespace _20_ValidaCPFComExecao
 {
@@ -14,17 +15,20 @@ namespace _20_ValidaCPFComExecao
         public CPF( string numero ) {              
             // 1 - Eliminar caractres não numéricos
             this.Numero = Regex.Replace(numero, "[^0-9]", "");
-        }              
 
-        public bool Validar()
-        {
             // 2 - Validar se tem 11 digitos
             if (this.Numero.Length != 11)
-                return false;           
+                //throw new Exception("O CPF dever ter 11 dígitos!");
+                throw new CPFQtdeDigitosException();
 
             // 3- Validas CPFs com todos os números iguais
             if (this.Numero.Distinct().Count() == 1)
-                return false;            
+                //throw new Exception("Todos os números do CPF não podem ser iguais!");             
+                throw new CPFMesmoNumeroException();
+        }              
+
+        public bool Validar()
+        {                  
 
             //4 - Cálculo do 1º Digito verificador            
             int digX = CalculaDV(this.Numero, 9, 10);

@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CNPJ.cs" />
+    <Compile Include="CPF.cs" />
+    <Compile Include="CPFMesmoNumeroException.cs" />
+    <Compile Include="CPFQtdeDigitosException.cs" />
+    <Compile Include="IDocumento.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

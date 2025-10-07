@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _20_ValidaCPFComExcecao;
 
 namespace _20_ValidaCPFComExecao
 {
@@ -10,10 +11,36 @@ namespace _20_ValidaCPFComExecao
     {
         static void Main(string[] args)
         {
-            Console.Write("Digite o CPF: ");
             //string cpf =  Console.ReadLine();
             //CPF objCPF = new CPF( cpf );
-            IDocumento documento = new CPF(Console.ReadLine());
+            IDocumento documento;
+            while (true)
+            {
+                Console.Write("Digite o CPF: ");
+                try
+                {
+                    documento = new CPF(Console.ReadLine());
+                    break;
+                }
+                catch (CPFQtdeDigitosException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                catch (CPFMesmoNumeroException ex)
+                { 
+                    Console.WriteLine(ex.Message); 
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"CPF inválido: {ex.Message}");
+                }
+                finally
+                {
+                    Console.WriteLine("Pressione qualquer tecla para continuar.");
+                    Console.ReadKey();
+                    Console.Clear();
+                }
+            }
 
             if (documento.Validar())
                 Console.WriteLine("Documento válido!");
